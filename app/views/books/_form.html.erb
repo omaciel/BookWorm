@@ -24,6 +24,14 @@
     <%= f.number_field :pages %>
   </div>
   <div class="field">
+    <%= f.label "Started (yyyy-mm-dd)" %><br />
+    <%= f.text_field :started_at %>
+  </div>
+  <div class="field">
+    <%= f.label "Finished (yyyy-mm-dd)" %><br />
+    <%= f.text_field :finished_at %>
+  </div>
+  <div class="field">
     <%= f.label :status %><br />
     <%= f.select :status, options_for_select(["Finished", "Reading", "On Hold", "Queued"], "Queued") %>
   </div>
