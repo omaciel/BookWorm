@@ -31,15 +31,15 @@
         </div>
       </div>
       <div class="clearfix">
-          <%= f.label :started_at, "Started (yyyy-mm-dd)" %>
+          <%= f.label :started_at, "Started (mm/dd/yyyy)" %>
           <div class="input">
-              <%= f.text_field :started_at, :value => (f.object.started_at.blank? ? '' : f.object.started_at.strftime('%Y-%m-%d')) %>
+              <%= f.text_field :started_at, :value => (f.object.started_at.blank? ? '' : f.object.started_at.strftime('%m/%d/%Y')) %>
           </div>
       </div>
       <div class="clearfix">
-          <%= f.label :finished_at, "Finished (yyyy-mm-dd)" %>
+          <%= f.label :finished_at, "Finished (mm/dd/yyyy)" %>
           <div class="input">
-              <%= f.text_field :finished_at, :value => (f.object.finished_at.blank? ? '' : f.object.finished_at.strftime('%Y-%m-%d')) %>
+              <%= f.text_field :finished_at, :value => (f.object.finished_at.blank? ? '' : f.object.finished_at.strftime('%m/%d/%Y')) %>
           </div>
       </div>
       <div class="clearfix">
