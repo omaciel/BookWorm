@@ -25,17 +25,17 @@
   </div>
   <div class="field">
     <%= f.label :started_at, "Started (yyyy-mm-dd)" %><br />
-    <%= f.text_field :started_at %>
+    <%= f.text_field :started_at, :value => (f.object.started_at.blank? ? '' : f.object.started_at.strftime('%Y-%m-%d')) %>
   </div>
   <div class="field">
     <%= f.label :finished_at, "Finished (yyyy-mm-dd)" %><br />
-    <%= f.text_field :finished_at %>
+    <%= f.text_field :finished_at, :value => (f.object.finished_at.blank? ? '' : f.object.finished_at.strftime('%Y-%m-%d')) %>
   </div>
   <div class="field">
     <%= f.label :status %><br />
     <%= f.select :status, options_for_select(["Finished", "Reading", "On Hold", "Queued"], "Queued") %>
   </div>
   <div class="actions">
-    <%= f.submit "Save" %>
+      <%= f.submit "Save", :class => "btn success" %>
   </div>
 <% end %>

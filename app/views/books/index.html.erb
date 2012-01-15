@@ -10,7 +10,6 @@
     <th>Status</th>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
 
 <% @books.each do |book| %>
@@ -21,13 +20,12 @@
     <td><%= (book.started_at.blank? ? '' : book.started_at.strftime('%m/%d/%Y')) %></td>
     <td><%= (book.finished_at.blank? ? '' : book.finished_at.strftime('%m/%d/%Y')) %></td>
     <td><%= book.status %></td>
-    <td><%= link_to 'Show', book %></td>
-    <td><%= link_to 'Edit', edit_book_path(book) %></td>
-    <td><%= link_to 'Delete', book, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Edit', edit_book_path(book), :class => "btn default" %></td>
+    <td><%= link_to 'Delete', book, :class => "btn danger", confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Book', new_book_path %>
+<%= link_to 'New Book', new_book_path, :class => "btn primary" %>
