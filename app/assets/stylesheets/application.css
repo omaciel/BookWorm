@@ -5,3 +5,7 @@
  *= require_self
  *= require_tree . 
 */
+
+footer p {
+    text-align: center;
+}
