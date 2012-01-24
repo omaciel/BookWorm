@@ -1,4 +1,7 @@
 Bookworm::Application.routes.draw do
+  get "pages/home"
+  get "pages/contact"
+
     resources :books
 
     root :to => 'books#index'
