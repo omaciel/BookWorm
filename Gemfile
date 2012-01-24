@@ -33,10 +33,13 @@ gem 'jquery-rails'
 group :development, :test do
     gem 'sqlite3'
     gem 'rspec-rails', '2.8.1'
+    gem 'webrat'
 end
 
 group :test do
-    gem 'capybara', '1.1.2'
+    gem 'sqlite3'
+    gem 'rspec-rails', '2.8.1'
+    gem 'webrat'
 end
 
 group :production do

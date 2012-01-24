@@ -1,10 +1,10 @@
 <div class="fill">
     <div class="container">
-        <a class="brand" href="#">BookWorm</a>
+        <%= link_to "BookWorm", root_path, :class => "brand" %>
         <ul class="nav">
-            <li class="active"><%= link_to "Home", root_path %></li>
             <li><%= link_to "About", about_path %></li>
-            <li><%= link_to "Contact", '#' %></li>
+            <li><%= link_to "Contact", contact_path %></li>
+            <li><%= link_to "Sign in", '#' %></li>
         </ul>
     </div>
 </div>
