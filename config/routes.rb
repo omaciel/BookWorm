@@ -1,5 +1,9 @@
 Bookworm::Application.routes.draw do
-  resources :books
+    resources :books
+
+    root :to => 'books#index'
+
+    match '/about', :to => "books#about"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

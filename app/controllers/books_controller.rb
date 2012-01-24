@@ -80,4 +80,9 @@ class BooksController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def about
+      @title = "About"
+  end
+
 end
