@@ -1,8 +1,14 @@
 <!-- main content goes here -->
 <div class="content">
 
-    <%= yield %>
-
-    <%= render 'layouts/footer' %>
+  <div class="row">
+          <div class="span10">
+            <%= yield %>
+          </div>
+          <div class="span4">
+            <h3>Secondary content</h3>
+          </div>
+            <%= render 'layouts/footer' %>
+        </div>
 
 </div>
