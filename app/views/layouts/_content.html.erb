@@ -9,7 +9,12 @@
             <%= yield %>
         </div>
         <div class="span4">
-            <h3>Secondary content</h3>
+            <% if @user %>
+                <%= gravatar_for @user %>
+                <%= link_to @user.name, user_path %>
+            <% else %>
+                <h3>Side bar</h3>
+            <% end %>
         </div>
     </div>
 
