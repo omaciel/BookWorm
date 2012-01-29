@@ -6,15 +6,15 @@
     </div>
     <div class="row">
         <div class="span10">
+            <section class="round">
+            <% flash.each do |key, value| %>
+                <div class="flash <%= key %>"><%= value %></div>
+            <% end %>
+            </section>
             <%= yield %>
         </div>
         <div class="span4">
-            <% if @user %>
-                <%= gravatar_for @user %>
-                <%= link_to @user.name, user_path %>
-            <% else %>
-                <h3>Side bar</h3>
-            <% end %>
+            <h3>Side bar</h3>
         </div>
     </div>
 

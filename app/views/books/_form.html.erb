@@ -1,58 +1,48 @@
 <%= form_for(@book) do |f| %>
-  <% if @book.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
+    <%= render 'shared/book_messages' %>
 
-      <ul>
-      <% @book.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <fieldset>
-      <div class="clearfix">
-        <%= f.label :title %>
-        <div class="input">
-            <%= f.text_field :title %>
+    <fieldset>
+        <div class="clearfix">
+            <%= f.label :title %>
+            <div class="input">
+                <%= f.text_field :title %>
+            </div>
         </div>
-      </div>
-      <div class="clearfix">
-        <%= f.label :author %>
-        <div class="input">
-            <%= f.text_field :author %>
+        <div class="clearfix">
+            <%= f.label :author %>
+            <div class="input">
+                <%= f.text_field :author %>
+            </div>
         </div>
-      </div>
-      <div class="clearfix">
-        <%= f.label :pages %>
-        <div class="input">
-            <%= f.number_field :pages %>
+        <div class="clearfix">
+            <%= f.label :pages %>
+            <div class="input">
+                <%= f.number_field :pages %>
+            </div>
         </div>
-      </div>
-      <div class="clearfix">
-          <%= f.label :started_at, "Started (mm/dd/yyyy)" %>
-          <div class="input">
-              <%= f.text_field :started_at, :value => (f.object.started_at.blank? ? '' : f.object.started_at.strftime('%m/%d/%Y')) %>
-          </div>
-      </div>
-      <div class="clearfix">
-          <%= f.label :finished_at, "Finished (mm/dd/yyyy)" %>
-          <div class="input">
-              <%= f.text_field :finished_at, :value => (f.object.finished_at.blank? ? '' : f.object.finished_at.strftime('%m/%d/%Y')) %>
-          </div>
-      </div>
-      <div class="clearfix">
-          <%= f.label :status %>
-          <div class="input">
-              <%= f.select :status, options_for_select(["Finished", "Reading", "On Hold", "Queued"], "Queued") %>
-          </div>
-      </div>
-      <div class="actions">
-          <div class="input">
-              <%= f.submit "Save changes", :class => "btn success" %>
-              <%= link_to 'Cancel', books_path, :class => "btn primary" %>
-          </div>
-      </div>
-  </fieldset>
+        <div class="clearfix">
+            <%= f.label :started_at, "Started (mm/dd/yyyy)" %>
+            <div class="input">
+                <%= f.text_field :started_at, :value => (f.object.started_at.blank? ? '' : f.object.started_at.strftime('%m/%d/%Y')) %>
+            </div>
+        </div>
+        <div class="clearfix">
+            <%= f.label :finished_at, "Finished (mm/dd/yyyy)" %>
+            <div class="input">
+                <%= f.text_field :finished_at, :value => (f.object.finished_at.blank? ? '' : f.object.finished_at.strftime('%m/%d/%Y')) %>
+            </div>
+        </div>
+        <div class="clearfix">
+            <%= f.label :status %>
+            <div class="input">
+                <%= f.select :status, options_for_select(["Finished", "Reading", "On Hold", "Queued"], "Queued") %>
+            </div>
+        </div>
+        <div class="actions">
+            <div class="input">
+                <%= f.submit "Save changes", :class => "btn success" %>
+                <%= link_to 'Cancel', books_path, :class => "btn primary" %>
+            </div>
+        </div>
+    </fieldset>
 <% end %>
