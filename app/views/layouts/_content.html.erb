@@ -14,7 +14,14 @@
             <%= yield %>
         </div>
         <div class="span4">
-            <h3>Side bar</h3>
+            <% if signed_in? %>
+                <h3>
+                    <%= gravatar_for @user %>
+                    <%= link_to @user.name, current_user %>
+                </h3>
+            <% else %>
+                <h3>Second content</h3>
+            <% end %>
         </div>
     </div>
 

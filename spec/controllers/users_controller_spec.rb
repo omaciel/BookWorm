@@ -26,12 +26,12 @@ describe UsersController do
 
         it "should include the user's name" do
             get :show, :id => @user
-            response.should have_selector("h1", :content => @user.name)
+            response.should have_selector("h3", :content => @user.name)
         end
 
         it "should have a profile image" do
             get :show, :id => @user
-            response.should have_selector("h1>img", :class => "gravatar")
+            response.should have_selector("h3>img", :class => "gravatar")
         end
 
     end
@@ -95,6 +95,11 @@ describe UsersController do
             it "should have a welcome message" do
                 post :create, :user => @attr
                 flash[:success].should =~ /welcome #{@attr[:name]}/i
+            end
+
+            it "should sign the user in" do
+                post :create, :user => @attr
+                controller.should be_signed_in
             end
         end
 
