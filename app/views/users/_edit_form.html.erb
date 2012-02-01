@@ -1,5 +1,5 @@
 <%= form_for(@user) do |f| %>
-    <%= render 'shared/error_messages', :object => f.object %>
+    <%= render 'shared/user_messages', :object => f.object %>
     <fieldset>
         <div class="clearfix">
             <%= f.label :name %><br />
@@ -27,7 +27,7 @@
         </div>
         <div class="actions">
             <div class="input">
-                <%= f.submit "Sign up" %>
+                <%= f.submit "Update" %>
             </div>
         </div>
     </fieldset>
