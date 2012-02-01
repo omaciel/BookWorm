@@ -1,5 +1,6 @@
 Bookworm::Application.routes.draw do
     resources :users
+    resources :books
     resources :sessions, :only => [:new, :create, :destroy]
 
     match '/signup', :to => 'users#new'
@@ -10,7 +11,5 @@ Bookworm::Application.routes.draw do
     match '/about', :to => "pages#about"
 
     root :to => 'pages#home'
-
-    #resources :books
 
 end

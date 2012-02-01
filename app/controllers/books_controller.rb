@@ -1,88 +1,47 @@
 class BooksController < ApplicationController
-  # GET /books
-  # GET /books.json
-  def index
-    @books = Book.order("finished_at desc", "started_at")
+    before_filter :authenticate, :only => [:new, :create, :destroy, :edit, :update]
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @books }
+    def new
+        @book = Book.new
     end
-  end
 
-  # GET /books/1
-  # GET /books/1.json
-  def show
-    @book = Book.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @book }
+    def create
+        @book = current_user.books.build(params[:book])
+        if @book.save
+            flash[:success] = "Book was successfully created.!"
+            redirect_to root_path
+        else
+            render 'pages/home'
+        end
     end
-  end
 
-  # GET /books/new
-  # GET /books/new.json
-  def new
-    @book = Book.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @book }
+    def show
+        @book = Book.find(params[:id])
     end
-  end
 
-  # GET /books/1/edit
-  def edit
-    @book = Book.find(params[:id])
-  end
-
-  # POST /books
-  # POST /books.json
-  def create
-    @book = Book.new(params[:book])
-
-    respond_to do |format|
-      if @book.save
-        format.html { redirect_to @book, notice: 'Book was successfully created.' }
-        format.json { render json: @book, status: :created, location: @book }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
-      end
+    def edit
+        @book = Book.find(params[:id])
     end
-  end
 
-  # PUT /books/1
-  # PUT /books/1.json
-  def update
-    @book = Book.find(params[:id])
+    def update
+        @book = Book.find(params[:id])
 
-    respond_to do |format|
-      if @book.update_attributes(params[:book])
-        format.html { redirect_to @book, notice: 'Book was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
-      end
+        if @book.update_attributes(params[:book])
+            flash[:success] = "Book updated."
+            redirect_to root_path
+        else
+            render :edit
+        end
     end
-  end
 
-  # DELETE /books/1
-  # DELETE /books/1.json
-  def destroy
-    @book = Book.find(params[:id])
-    @book.destroy
+    def destroy
+        @book = Book.find(params[:id])
+        @book.destroy
 
-    respond_to do |format|
-      format.html { redirect_to books_url }
-      format.json { head :ok }
+        respond_to do |format|
+            format.html { redirect_to root_path }
+            format.json { head :ok }
+        end
     end
-  end
-
-  def about
-      @title = "About"
-  end
 
 end

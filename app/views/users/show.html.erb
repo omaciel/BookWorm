@@ -2,3 +2,15 @@
     <%= gravatar_for @user %>
     <%= @user.name %>
 </h1>
+
+<h3>Books: <%= @user.books.count %></h3>
+
+    <table class="books" summary="User books: #{@user.books.count}">
+<% unless @user.books.empty? %>
+        <%= render @books %>
+    <%= will_paginate @books %>
+<% end %>
+    </table>
+<br />
+
+<%= link_to 'New book', new_book_path, :class => "btn primary" %>

@@ -1,4 +1,37 @@
-<h2>Main Content</h2>
+<% if signed_in? %>
+    <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+    </h1>
 
-<p>Etiam porta sem malesuada magna mollis euismod. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-<p>Etiam porta sem malesuada magna mollis euismod. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+    <h3>Books: <%= @user.books.count %></h3>
+
+    <table class="books" summary="User books: #{@user.books.count}">
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Pages</th>
+            <th>Started On:</th>
+            <th>Finished On:</th>
+            <th>Status</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <% unless @user.books.empty? %>
+            <%= render @books %>
+            <%= will_paginate @books %>
+        <% end %>
+    </table>
+
+    <%= link_to 'New book', new_book_path, :class => "btn primary" %>
+<% else %>
+    <h1>BookWorm</h1>
+
+    <p>
+    This is the home page for the
+    <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
+    sample application.
+    </p>
+
+    <%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
+<% end %>

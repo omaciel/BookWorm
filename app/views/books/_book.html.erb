@@ -1,0 +1,10 @@
+<tr>
+    <td><%= book.title %></td>
+    <td><%= book.author %></td>
+    <td><%= book.pages %></td>
+    <td><%= (book.started_at.blank? ? '' : book.started_at.strftime('%m/%d/%Y')) %></td>
+    <td><%= (book.finished_at.blank? ? '' : book.finished_at.strftime('%m/%d/%Y')) %></td>
+    <td><%= book.status %></td>
+    <td><%= link_to 'Edit', edit_book_path(book), :class => "btn default" %></td>
+    <td><%= link_to 'Delete', book, :class => "btn danger", confirm: 'Are you sure?', method: :delete %></td>
+</tr>

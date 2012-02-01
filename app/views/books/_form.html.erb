@@ -1,5 +1,5 @@
 <%= form_for(@book) do |f| %>
-    <%= render 'shared/book_messages' %>
+    <%= render 'shared/book_messages', :object => f.object %>
 
     <fieldset>
         <div class="clearfix">
@@ -21,13 +21,13 @@
             </div>
         </div>
         <div class="clearfix">
-            <%= f.label :started_at, "Started (mm/dd/yyyy)" %>
+            <%= f.label :started_at, "Started" %>
             <div class="input">
                 <%= f.text_field :started_at, :value => (f.object.started_at.blank? ? '' : f.object.started_at.strftime('%m/%d/%Y')) %>
             </div>
         </div>
         <div class="clearfix">
-            <%= f.label :finished_at, "Finished (mm/dd/yyyy)" %>
+            <%= f.label :finished_at, "Finished" %>
             <div class="input">
                 <%= f.text_field :finished_at, :value => (f.object.finished_at.blank? ? '' : f.object.finished_at.strftime('%m/%d/%Y')) %>
             </div>
@@ -41,7 +41,7 @@
         <div class="actions">
             <div class="input">
                 <%= f.submit "Save changes", :class => "btn success" %>
-                <%= link_to 'Cancel', books_path, :class => "btn primary" %>
+                <%= link_to 'Cancel', root_path, :class => "btn primary" %>
             </div>
         </div>
     </fieldset>
