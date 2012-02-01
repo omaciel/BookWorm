@@ -1,0 +1,27 @@
+<%= render 'shared/user_messages', :object => f.object %>
+<fieldset>
+    <div class="clearfix">
+        <%= f.label :name %><br />
+        <div class="input">
+            <%= f.text_field :name %>
+        </div>
+    </div>
+    <div class="clearfix">
+        <%= f.label :email %><br />
+        <div class="input">
+            <%= f.text_field :email %>
+        </div>
+    </div>
+    <div class="clearfix">
+        <%= f.label :password %><br />
+        <div class="input">
+            <%= f.password_field :password %>
+        </div>
+    </div>
+    <div class="clearfix">
+        <%= f.label :password_confirmation, "Confirmation" %><br />
+        <div class="input">
+            <%= f.password_field :password_confirmation %>
+        </div>
+    </div>
+</fieldset>

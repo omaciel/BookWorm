@@ -1,6 +1,13 @@
 <h1>Edit user</h1>
 
-<%= render 'edit_form' %>
+<%= form_for(@user) do |f| %>
+    <%= render 'fields', :f => f %>
+    <div class="actions">
+        <div class="input">
+            <%= f.submit "Update" %>
+        </div>
+    </div>
+<% end %>
 
 <div>
     <%= gravatar_for @user %>
