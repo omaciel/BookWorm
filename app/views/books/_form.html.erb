@@ -35,7 +35,7 @@
         <div class="clearfix">
             <%= f.label :status %>
             <div class="input">
-                <%= f.select :status, options_for_select(["Finished", "Reading", "On Hold", "Queued"], "Queued") %>
+                <%= f.select :status, options_for_select(["Finished", "Reading", "On Hold", "Queued"], f.object.status.nil? ? "Queued" : f.object.status) %>
             </div>
         </div>
         <div class="actions">
