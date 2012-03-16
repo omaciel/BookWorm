@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
-        @books = @user.books.paginate(:page => params[:page])
+        @books = @user.books.paginate(:page => params[:page]).order("finished_at DESC")
         @title = @user.name
     end
 
