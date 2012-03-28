@@ -7,3 +7,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+(function ($) {
+    $(function () {
+        $('#book_started_at, #book_finished_at').datepicker({
+            dateFormat: 'yy-mm-dd',
+            gotoCurrent: true,
+        });
+    });
+})(jQuery);

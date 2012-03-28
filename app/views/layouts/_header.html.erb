@@ -1,6 +1,8 @@
 <head>
     <title><%= title %></title>
     <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js" %>
+      
     <%= csrf_meta_tag %>
     <meta charset="utf-8">
     <meta name="description" content="">
@@ -13,7 +15,8 @@
 
     <!-- Le styles -->
     <link href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css" rel="stylesheet">
-    <%= stylesheet_link_tag 'application', :media => 'screen' %>
+    <%= stylesheet_link_tag 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/smoothness/jquery-ui.css',
+      'application', :media => 'screen' %>
     <style type="text/css">
         body {
             padding-top: 60px;
