@@ -5,6 +5,8 @@ class PagesController < ApplicationController
         if signed_in?
             @user = current_user
             @books = @user.books.paginate(:page => params[:page])
+            @total_books = @user.books.count(:conditions => "status = 'Finished'")
+            @total_pages = @user.books.calculate(:sum, :pages, :conditions => "status = 'Finished'")
         end
     end
 

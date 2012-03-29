@@ -4,8 +4,6 @@
         <%= @user.name %>
     </h1>
 
-    <h3>Books: <%= @user.books.count %></h3>
-
     <table class="books" summary="User books: #{@user.books.count}">
         <tr>
             <th>Title</th>
@@ -23,13 +21,15 @@
         <% end %>
     </table>
 
+    <p>Books read: <%= @total_books %> | Pages: <%= @total_pages %></p>
+
     <%= link_to 'New book', new_book_path, :class => "btn primary" %>
 <% else %>
     <h1>BookWorm</h1>
 
     <p>
-    This is the home page for the
-    <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
+    This is the home page for the BookWorm
+    <a href="https://github.com/omaciel/BookWorm">BookWorm</a>
     sample application.
     </p>
 
