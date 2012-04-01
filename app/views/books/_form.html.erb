@@ -1,48 +1,52 @@
-<%= form_for(@book) do |f| %>
-    <%= render 'shared/book_messages', :object => f.object %>
+<%= form_for @book, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> /Book</legend>
 
-    <fieldset>
-        <div class="clearfix">
-            <%= f.label :title %>
-            <div class="input">
-                <%= f.text_field :title %>
-            </div>
-        </div>
-        <div class="clearfix">
-            <%= f.label :author %>
-            <div class="input">
-                <%= f.text_field :author %>
-            </div>
-        </div>
-        <div class="clearfix">
-            <%= f.label :pages %>
-            <div class="input">
-                <%= f.number_field :pages %>
-            </div>
-        </div>
-        <div class="clearfix">
-            <%= f.label :started_at, "Started" %>
-            <div class="input">
-                <%= f.text_field :started_at, :include_blank => true %>
-            </div>
-        </div>
-        <div class="clearfix">
-            <%= f.label :finished_at, "Finished" %>
-            <div class="input">
-                <%= f.text_field :finished_at, :include_blank => true %>
-            </div>
-        </div>
-        <div class="clearfix">
-            <%= f.label :status %>
-            <div class="input">
-                <%= f.select :status, options_for_select(["Finished", "Reading", "On Hold", "Queued"], f.object.status.nil? ? "Queued" : f.object.status) %>
-            </div>
-        </div>
-        <div class="actions">
-            <div class="input">
-                <%= f.submit "Save changes", :class => "btn success" %>
-                <%= link_to 'Cancel', root_path, :class => "btn primary" %>
-            </div>
-        </div>
-    </fieldset>
+    <div class="control-group">
+      <%= f.label :title, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :title, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :author, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :author, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :pages, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.number_field :pages, :class => 'number_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :started_at, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :started_at, :class => 'date_select' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :finished_at, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :finished_at, :class => 'date_select' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :status, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.select :status, options_for_select(["Finished", "Reading", "On Hold", "Queued"], f.object.status.nil? ? "Queued" : f.object.status) %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit 'Save changes', :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', root_path, :class => 'btn' %>
+    </div>
+  </fieldset>
 <% end %>

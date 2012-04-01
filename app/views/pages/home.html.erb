@@ -4,26 +4,8 @@
         <%= @user.name %>
     </h1>
 
-    <table class="books" summary="User books: #{@user.books.count}">
-        <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Pages</th>
-            <th>Started On:</th>
-            <th>Finished On:</th>
-            <th>Status</th>
-            <th></th>
-            <th></th>
-        </tr>
-        <% unless @user.books.empty? %>
-            <%= render @books %>
-            <%= will_paginate @books %>
-        <% end %>
-    </table>
+    <%= render 'books/index' %>
 
-    <p>Books read: <%= @total_books %> | Pages: <%= @total_pages %></p>
-
-    <%= link_to 'New book', new_book_path, :class => "btn primary" %>
 <% else %>
     <h1>BookWorm</h1>
 

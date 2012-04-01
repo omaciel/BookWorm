@@ -2,18 +2,20 @@
 <div class="container">
     <div class="content">
 
-        <div class="page-header">
-            <h1>BookWorm: <small>Track and manage books you want to read.</small></h1>
+        <div class="hero-unit">
+            <h1 class="align-center">BookWorm</h1>
+            <p>Track and manage books you want to read.</p>
         </div>
-        <div class="row">
-            <section class="round">
-            <% flash.each do |key, value| %>
-                <div class="flash <%= key %>"><%= value %></div>
-            <% end %>
-            </section>
-            <%= yield %>
-        </div>
-
+        <section class="round">
+        <% flash.each do |key, value| %>
+            <div class="alert alert-<%= key %>">
+                <a class="close" data-dismiss="alert">×</a>
+                <%= value %>
+            </div>
+        <% end %>
+        </section>
+        <%= yield %>
+        
         <%= render 'layouts/footer' %>
     </div>
 </div>

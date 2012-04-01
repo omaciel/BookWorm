@@ -1,20 +1,22 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Title:</b>
+  <b>Title</b>
   <%= @book.title %>
 </p>
 
 <p>
-  <b>Author:</b>
+  <b>Author</b>
   <%= @book.author %>
 </p>
 
 <p>
-  <b>Pages:</b>
+  <b>Pages</b>
   <%= @book.pages %>
 </p>
 
-
-<%= link_to 'Edit', edit_book_path(@book), :class => "btn default" %> |
-<%= link_to 'Back', books_path, :class => "btn primary" %>
+<div class="form-actions">
+  <%= link_to 'Back', books_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_book_path(@book), :class => 'btn' %>
+  <%= link_to 'Delete', book_path(@book), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>
