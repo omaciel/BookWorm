@@ -1,19 +1,11 @@
-<% if signed_in? %>
-    <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-    </h1>
+<h1>BookWorm</h1>
 
-    <%= render 'books/index' %>
+<p>
+This is the home page for the BookWorm
+<a href="https://github.com/omaciel/BookWorm">BookWorm</a>
+sample application.
+</p>
 
-<% else %>
-    <h1>BookWorm</h1>
+<p>This is where we will display a list of all public books by all users.</p>
 
-    <p>
-    This is the home page for the BookWorm
-    <a href="https://github.com/omaciel/BookWorm">BookWorm</a>
-    sample application.
-    </p>
-
-    <%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
-<% end %>
+<%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>

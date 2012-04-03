@@ -28,5 +28,5 @@
   </tbody>
 </table>
 
-<p>Books read: <%= @total_books %> | Pages read: <%= @total_pages %></p>
+<p>Books read: <span class="badge badge-succes"><%= @total_books %></span> | Pages read: <span class="badge badge-inverse"><%= @total_pages %></span></p>
 <%= link_to 'New', new_book_path, :class => 'btn btn-primary' %>

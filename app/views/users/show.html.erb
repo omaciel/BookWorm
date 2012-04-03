@@ -3,14 +3,15 @@
     <%= @user.name %>
 </h1>
 
-<h3>Books: <%= @user.books.count %></h3>
+<% if signed_in? %>
+    <h3>Books: <%= @user.books.count %></h3>
 
     <table class="books" summary="User books: #{@user.books.count}">
-<% unless @user.books.empty? %>
-        <%= render @books %>
-    <%= will_paginate @books %>
-<% end %>
+        <% unless @user.books.empty? %>
+            <%= render 'books/index' %>
+        <% end %>
     </table>
-<br />
+    <br />
+    <%= will_paginate @books %>
 
-<%= link_to 'New book', new_book_path, :class => "btn primary" %>
+<% end %>

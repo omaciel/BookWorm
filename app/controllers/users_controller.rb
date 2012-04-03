@@ -9,9 +9,16 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = User.find(params[:id])
-        @books = @user.books.paginate(:page => params[:page], :per_page => 20).order("finished_at DESC, title ASC")
-        @title = @user.name
+        if signed_in?
+            @user = current_user
+            @title = @user.name
+            @books = @user.books.paginate(:page => params[:page], :per_page => 15).order("finished_at DESC, title ASC")
+            @total_books = @user.books.count(:conditions => "status = 'Finished'")
+            @total_pages = @user.books.calculate(:sum, :pages, :conditions => "status = 'Finished'")
+        else
+            @title = "Sign up"
+            render :new
+        end
     end
 
     def new
