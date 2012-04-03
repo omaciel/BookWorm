@@ -5,12 +5,12 @@ class UsersController < ApplicationController
 
     def index
         @title = "All users"
-        @users = User.paginate(:page => params[:page])
+        @users = User.paginate(:page => params[:page], :order => 'finished_at DESC', :per_page => 20)
     end
 
     def show
         @user = User.find(params[:id])
-        @books = @user.books.paginate(:page => params[:page]).order("finished_at DESC")
+        @books = @user.books.paginate(:page => params[:page], :per_page => 20).order("finished_at DESC, title ASC")
         @title = @user.name
     end
 
