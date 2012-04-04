@@ -14,10 +14,10 @@ class UsersController < ApplicationController
             @title = @user.name
             @books = @user.books.paginate(:page => params[:page], :per_page => 15).order("finished_at DESC, title ASC")
             @books_total = @user.books.count
-            @books_finished = (@user.books.count(:conditions => "status = 'Finished'") / @books_total) * 100
-            @books_onhold = (@user.books.count(:conditions => "status = 'On Hold'") / @books_total) * 100
-            @books_reading = (@user.books.count(:conditions => "status = 'Reading'") / @books_total) * 100
-            @books_queued = (@user.books.count(:conditions => "status = 'Queued'") / @books_total) * 100
+            @books_finished = (@user.books.count(:conditions => "status = 'Finished'") / @books_total.to_f) * 100
+            @books_onhold = (@user.books.count(:conditions => "status = 'On Hold'") / @books_total.to_f) * 100
+            @books_reading = (@user.books.count(:conditions => "status = 'Reading'") / @books_total.to_f) * 100
+            @books_queued = (@user.books.count(:conditions => "status = 'Queued'") / @books_total.to_f) * 100
             @total_pages = @user.books.calculate(:sum, :pages, :conditions => "status = 'Finished'")
         else
             @title = "Sign up"
