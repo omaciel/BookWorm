@@ -10,14 +10,15 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= current_user.name %>
                         <b class="caret"></b>
                     </a>
-                        <ul class="dropdown-menu">
-                    <% if current_user.admin? %>
-                        <li><%= link_to "Users", users_path %></li>
-                    <% end %>
-                    <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-                    <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
-                </ul>
-                </li>
+                    <ul class="dropdown-menu">
+                        <% if current_user.admin? %>
+                            <li><%= link_to "Users", users_path %></li>
+                        <% end %>
+                        <li><%= link_to "Books", user_path(current_user) %></li>
+                        <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+                        <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
+                    </ul>
+                    </li>
                 <% else %>
                     <li><%= link_to "Sign in", signin_path %></li>
                 <% end %>
