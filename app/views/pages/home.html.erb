@@ -21,6 +21,8 @@
             <% end %>
         </tbody>
     </table>
+    <br />
+    <%= will_paginate @books, :class => "pagination pagination-centered" %>
 <% end %>
 
 <% if !signed_in? %>
