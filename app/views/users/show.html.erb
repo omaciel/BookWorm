@@ -1,17 +1,44 @@
-<h1>
+<h1 class="user_gravatar">
     <%= gravatar_for @user %>
     <%= @user.name %>
 </h1>
 
 <% if signed_in? %>
-    <h3>Books: <%= @user.books.count %></h3>
+    <div class="row">
+        <div class="span2">
+            <p>Finished:
+            <div class="progress progress-success">
+                <div class="bar" style="width: <%= @books_finished %>%;"></div>
+            </div>
+            </p>
+            <p>Reading:
+            <div class="progress progress-info">
+                <div class="bar" style="width: <%= @books_reading %>%;"></div>
+            </div>
+            </p>
+            <p>On Hold:
+            <div class="progress progress-warning">
+                <div class="bar" style="width: <%= @books_onhold %>%;"></div>
+            </div>
+            </p>
+            <p>Queued:
+            <div class="progress progress-danger">
+                <div class="bar" style="width: <%= @books_queued %>%;"></div>
+            </div>
+            </p>
+            <h4>Pages read: <span class="badge badge-inverse"><%= @total_pages %></span></h4>
+            <h4>Total: <%= @books_total %></h4>
+        </div>
 
-    <table class="books" summary="User books: #{@user.books.count}">
-        <% unless @user.books.empty? %>
-            <%= render 'books/index' %>
-        <% end %>
-    </table>
-    <br />
-    <%= will_paginate @books %>
+        <div class="span10">
 
-<% end %>
+            <table class="books" summary="User books: #{@user.books.count}">
+                <% unless @user.books.empty? %>
+                    <%= render 'books/index' %>
+                <% end %>
+            </table>
+            <br />
+            <%= will_paginate @books %>
+        </div>
+
+    <% end %>
