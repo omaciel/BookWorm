@@ -1,5 +1,5 @@
 class Book < ActiveRecord::Base
-    attr_accessible :title, :author, :pages, :status, :started_at, :finished_at
+    attr_accessible :title, :author, :pages, :status, :started_at, :finished_at, :visible
 
     belongs_to :user
 
