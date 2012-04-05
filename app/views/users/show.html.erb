@@ -1,9 +1,6 @@
 <h1 class="user_gravatar">
     <%= gravatar_for @user %>
     <%= @user.name %>
-    <% if signed_in? %>
-        <p class="pull-right"><%= link_to 'New Book', new_book_path, :class => 'btn btn-primary' %></p>
-    <% end %>
 </h1>
 
 <% if signed_in? %>
@@ -34,6 +31,20 @@
         </div>
 
         <div class="span10">
+            <div class="row">
+                <div class="span4">
+                    <p class="pull-left"><%= link_to 'New Book', new_book_path, :class => 'btn btn-primary' %></p>
+                </div>
+                <div class="span6">
+                    <p class="pull-right">Show:
+                        <a class="badge" href="#">All</a>
+                        <a class="badge badge-success" href="#">Finished</a>
+                        <a class="badge badge-info" href="#">Reading</a>
+                        <a class="badge badge-warning" href="#">On Hold</a>
+                        <a class="badge badge-error" href="#">Queued</a>
+                    </p>
+                </div>
+            </div>
             <% unless @user.books.empty? %>
                 <%= render 'books/index' %>
             <% end %>
