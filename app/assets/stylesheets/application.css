@@ -29,7 +29,32 @@
 }
 
 .user_gravatar {
-      margin-bottom:18px;
+    margin-bottom:18px;
+}
+
+.user_gravatar .btn {
+    margin-top:8px;
+}
+
+.book {
+	border-left-width:3px;
+	border-left-style:solid;
+}
+
+.book.queued {
+	border-left-color:#dd514c;
+}
+
+.book.onhold {
+	border-left-color:#FAA732;
+}
+
+.book.reading {
+	border-left-color:#4BB1CF;
+}
+
+.book.finished {
+	border-left-color:#5EB95E;
 }
 
 .badge-info a,

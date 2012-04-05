@@ -6,26 +6,37 @@
       <th>Pages</th>
       <th>Started On:</th>
       <th>Finished On:</th>
-      <th>Status</th>
       <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     <% @books.each do |book| %>
-      <tr>
-        <td><%= link_to book.title, book_path(book) %></td>
-        <td><%= link_to book.author, book_path(book) %></td>
-        <td><%= book.pages %></td>
-        <td><%= (book.started_at.blank? ? '' : book.started_at.strftime('%m/%d/%Y')) %></td>
-        <td><%= (book.finished_at.blank? ? '' : book.finished_at.strftime('%m/%d/%Y')) %></td>
-        <td><%= book.status %></td>
-        <td>
-          <%= link_to 'Edit', edit_book_path(book), :class => 'btn btn-mini' %>
-          <%= link_to 'Destroy', book_path(book), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
-        </td>
+      <% case book.status
+        when 'Queued' %>
+        <tr class="book queued">
+      <% when 'On Hold' %>
+        <tr class="book onhold">
+      <% when 'Reading' %>
+        <tr class="book reading">
+      <% when 'Finished' %>
+        <tr class="book finished">
+      <% end %>
+          <td><%= link_to book.title, book_path(book) %></td>
+          <td><%= link_to book.author, book_path(book) %></td>
+          <td><%= book.pages %></td>
+          <td><%= (book.started_at.blank? ? '' : book.started_at.strftime('%m/%d/%Y')) %></td>
+          <td><%= (book.finished_at.blank? ? '' : book.finished_at.strftime('%m/%d/%Y')) %></td>
+          <td>
+              <div class="btn-group">
+                  <%= link_to(edit_book_path(book), :class => 'btn btn-mini') do %>
+                    <i class="icon-pencil"></i>
+                  <% end %>
+                  <%= link_to(book_path(book), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger') do %>
+                      <i class="icon-remove icon-white"></i>
+                  <% end %>
+              </div>
+          </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<p class="pull-right"><span class="badge badge-info"><%= link_to 'New', new_book_path %></span></p>

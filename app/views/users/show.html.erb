@@ -1,6 +1,9 @@
 <h1 class="user_gravatar">
     <%= gravatar_for @user %>
     <%= @user.name %>
+    <% if signed_in? %>
+        <p class="pull-right"><%= link_to 'New Book', new_book_path, :class => 'btn btn-primary' %></p>
+    <% end %>
 </h1>
 
 <% if signed_in? %>
@@ -31,13 +34,10 @@
         </div>
 
         <div class="span10">
+            <% unless @user.books.empty? %>
+                <%= render 'books/index' %>
+            <% end %>
 
-            <table class="books" summary="User books: #{@user.books.count}">
-                <% unless @user.books.empty? %>
-                    <%= render 'books/index' %>
-                <% end %>
-            </table>
-            <br />
             <%= will_paginate @books, :class => "pagination pagination-centered" %>
         </div>
 
