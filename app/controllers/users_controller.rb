@@ -9,10 +9,20 @@ class UsersController < ApplicationController
     end
 
     def show
+
+
         if signed_in?
             @user = current_user
+            if params[:status].nil? then
+                params[:status] = session[:status].nil? ? {} : session[:status]
+                @books = Book.paginate(:page => params[:page], :per_page => 15, :conditions => { :user_id => @user }).order("finished_at DESC, title ASC")
+            else
+                session[:status] = params[:status]
+                @books = Book.paginate(:page => params[:page], :per_page => 15, :conditions => { :user_id => @user, :status => params[:status].keys }).order("finished_at DESC, title ASC")
+            end
             @title = @user.name
-            @books = @user.books.paginate(:page => params[:page], :per_page => 15).order("finished_at DESC, title ASC")
+
+            @all_status = Book.status
             @books_total = @user.books.count
             @books_finished = (@user.books.count(:conditions => "status = 'Finished'") / @books_total.to_f) * 100
             @books_onhold = (@user.books.count(:conditions => "status = 'On Hold'") / @books_total.to_f) * 100

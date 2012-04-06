@@ -9,4 +9,8 @@ class Book < ActiveRecord::Base
               :length => { :maximum => 50 }
 
     default_scope :order => 'books.finished_at DESC'
+
+    def Book.status
+        books = ["Finished", "Reading", "On Hold", "Queued"]
+    end
 end
