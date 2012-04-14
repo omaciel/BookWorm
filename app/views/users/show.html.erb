@@ -31,19 +31,16 @@
         </div>
 
         <div class="span10">
-            <div class="row">
-                <div class="span2">
-                    <p class="pull-left"><%= link_to 'New Book', new_book_path, :class => 'btn btn-primary' %></p>
-                </div>
-                <div class="span6 offset1">
-                    <%= form_tag user_path(current_user), :method => "get", :id => "status_submit", :html => { :class => "well form-inline" } do %>
-                        <% @all_status.each do |status| %>
-                            <%= check_box_tag "status[#{status}]", true, params[:status].key?("#{status}"), :html => { :class => "checkbox inline" } %>
-                            <%= label_tag status, nil, :class => 'checkbox inline' %>
-                        <% end %>
-                        <%= submit_tag "Refresh", :class => "btn btn-primary" %>
+            <div class="book-actions well clearfix">
+                <p class="pull-left"><%= link_to 'New Book', new_book_path, :class => 'btn btn-primary' %></p>
+
+                <%= form_tag user_path(current_user), :method => "get", :id => "status_submit", :class => "form-inline pull-right" do %>
+                    <% @all_status.each do |status| %>
+                        <%= check_box_tag "status[#{status}]", true, params[:status].key?("#{status}"), :class => "checkbox inline" %>
+                        <%= label_tag "status_" + status, status, :class => 'checkbox' %>
                     <% end %>
-                </div>
+                    <%= submit_tag "Refresh", :class => "btn" %>
+                <% end %>
             </div>
             <% unless @user.books.empty? %>
                 <%= render 'books/index' %>

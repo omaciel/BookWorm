@@ -32,6 +32,11 @@
     margin-bottom:18px;
 }
 
+.book-actions p,
+.book-actions form {
+	margin-bottom:0;
+}
+
 .book {
 	border-left-width:3px;
 	border-left-style:solid;
