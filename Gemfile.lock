@@ -141,6 +141,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-will_paginate
   coffee-rails (~> 3.2.2)
   factory_girl_rails
   faker (= 0.3.1)
@@ -155,4 +156,3 @@ DEPENDENCIES
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
   webrat
-  will_paginate

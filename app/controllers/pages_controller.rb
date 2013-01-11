@@ -2,12 +2,7 @@ class PagesController < ApplicationController
 
     def home
         @title = "Home"
-        if signed_in?
-            @user = current_user
-            @books = @user.books.paginate(:page => params[:page])
-            @total_books = @user.books.count(:conditions => "status = 'Finished'")
-            @total_pages = @user.books.calculate(:sum, :pages, :conditions => "status = 'Finished'")
-        end
+        @books = Book.paginate(:page => params[:page], :per_page => 15, :order => "finished_at DESC, started_at DESC, title ASC").where(:visible => true)
     end
 
     def contact

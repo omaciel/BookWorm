@@ -1,16 +1,52 @@
-<h1>
+<h1 class="user_gravatar">
     <%= gravatar_for @user %>
     <%= @user.name %>
 </h1>
 
-<h3>Books: <%= @user.books.count %></h3>
+<% if signed_in? %>
+    <div class="row">
+        <div class="span2">
+            <p>Finished:
+            <div class="progress progress-success">
+                <div class="bar" style="width: <%= @books_finished %>%;"></div>
+            </div>
+            </p>
+            <p>Reading:
+            <div class="progress progress-info">
+                <div class="bar" style="width: <%= @books_reading %>%;"></div>
+            </div>
+            </p>
+            <p>On Hold:
+            <div class="progress progress-warning">
+                <div class="bar" style="width: <%= @books_onhold %>%;"></div>
+            </div>
+            </p>
+            <p>Queued:
+            <div class="progress progress-danger">
+                <div class="bar" style="width: <%= @books_queued %>%;"></div>
+            </div>
+            </p>
+            <h4>Pages read: <span class="badge badge-inverse"><%= @total_pages %></span></h4>
+            <h4>Total: <%= @books_total %></h4>
+        </div>
 
-    <table class="books" summary="User books: #{@user.books.count}">
-<% unless @user.books.empty? %>
-        <%= render @books %>
-    <%= will_paginate @books %>
-<% end %>
-    </table>
-<br />
+        <div class="span10">
+            <div class="book-actions well clearfix">
+                <p class="pull-left"><%= link_to 'New Book', new_book_path, :class => 'btn btn-primary' %></p>
 
-<%= link_to 'New book', new_book_path, :class => "btn primary" %>
+                <%= form_tag user_path(current_user), :method => "get", :id => "status_submit", :class => "form-inline pull-right" do %>
+                    <% @all_status.each do |status| %>
+                        <%= check_box_tag "status[#{status}]", true, params[:status].key?("#{status}"), :class => "checkbox inline" %>
+                        <%= label_tag "status_" + status, status, :class => 'checkbox' %>
+                    <% end %>
+                    <%= submit_tag "Refresh", :class => "btn" %>
+                <% end %>
+            </div>
+            <% unless @user.books.empty? %>
+                <%= render 'books/index' %>
+            <% end %>
+
+            <%= will_paginate @books, :class => "pagination pagination-centered" %>
+        </div>
+
+    <% end %>

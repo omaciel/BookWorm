@@ -9,10 +9,9 @@ class BooksController < ApplicationController
         @book = current_user.books.build(params[:book])
         if @book.save
             flash[:success] = "Book was successfully created.!"
-            redirect_to root_path
-        else
-            render 'pages/home'
         end
+
+        redirect_to user_path(current_user)
     end
 
     def show
@@ -28,7 +27,7 @@ class BooksController < ApplicationController
 
         if @book.update_attributes(params[:book])
             flash[:success] = "Book updated."
-            redirect_to root_path
+            redirect_to user_path(current_user)
         else
             render :edit
         end
@@ -39,7 +38,7 @@ class BooksController < ApplicationController
         @book.destroy
 
         respond_to do |format|
-            format.html { redirect_to root_path }
+            format.html { redirect_to user_path(current_user) }
             format.json { head :ok }
         end
     end

@@ -1,19 +1,30 @@
-<% if signed_in? %>
-    <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-    </h1>
+<% if @books %>
+    <table class="books table table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Pages</th>
+                <th>User</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @books.each do |book| %>
+                <tr>
+                    <td><%= book.title %></td>
+                    <td><%= book.author %></td>
+                    <td><%= book.pages %></td>
+                    <td><%= book.user.name %></td>
+                    <td><%= book.status %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <br />
+    <%= will_paginate @books, :class => "pagination pagination-centered" %>
+<% end %>
 
-    <%= render 'books/index' %>
-
-<% else %>
-    <h1>BookWorm</h1>
-
-    <p>
-    This is the home page for the BookWorm
-    <a href="https://github.com/omaciel/BookWorm">BookWorm</a>
-    sample application.
-    </p>
-
-    <%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
+<% if !signed_in? %>
+    <%= link_to "Sign up now!", signup_path, :class => "btn btn-primary" %>
 <% end %>

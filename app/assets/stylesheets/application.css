@@ -3,58 +3,67 @@
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
- *= require_tree . 
+ *= require_tree .
 */
 
 /* Override some defaults */
-      html, body {
-        background-color: #eee;
-      }
-      .container {
-        width: 820px; /* downsize our container to make the content feel a bit tighter and more cohesive. NOTE: this removes two full columns from the grid, meaning you only go to 14 columns and not 16. */
-      }
+/* The white background content wrapper */
+.content {
+    background-color: #fff;
+    padding: 20px;
+    margin: 0 -20px 20px; /* negative indent the amount of the padding to maintain the grid system */
+    -webkit-border-radius: 0 0 6px 6px;
+       -moz-border-radius: 0 0 6px 6px;
+            border-radius: 0 0 6px 6px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+       -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+            box-shadow: 0 1px 2px rgba(0,0,0,.15);
+}
 
-      /* The white background content wrapper */
-      .content {
-        background-color: #fff;
-        padding: 20px;
-        margin: 0 -20px 20px; /* negative indent the amount of the padding to maintain the grid system */
-        -webkit-border-radius: 0 0 6px 6px;
-           -moz-border-radius: 0 0 6px 6px;
-                border-radius: 0 0 6px 6px;
-        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-                box-shadow: 0 1px 2px rgba(0,0,0,.15);
-      }
+/* Page header tweaks */
+.hero-unit {
+    text-align:center;
+}
+.hero-unit p {
+      margin-bottom:0;
+}
 
-      /* Page header tweaks */
-      .hero-unit {
-        text-align:center;
-      }
-      .hero-unit p {
-          margin-bottom:0;
-      }
+.user_gravatar {
+    margin-bottom:18px;
+}
 
-      .books {
-          margin-top:20px;
-      }
+.book-actions p,
+.book-actions form {
+	margin-bottom:0;
+}
 
-      /* Styles you shouldn't keep as they are for displaying this base example only */
-      .content .span10,
-      .content .span4 {
-        min-height: 500px;
-      }
-      /* Give a quick and non-cross-browser friendly divider */
-      .content .span4 {
-        margin-left: 0;
-        padding-left: 19px;
-        border-left: 1px solid #eee;
-      }
+.book {
+	border-left-width:3px;
+	border-left-style:solid;
+}
 
-      .topbar .btn {
-        border: 0;
-      }
+.book.queued {
+	border-left-color:#dd514c;
+}
 
-      footer p {
-        text-align: center;
-      }
+.book.onhold {
+	border-left-color:#FAA732;
+}
+
+.book.reading {
+	border-left-color:#4BB1CF;
+}
+
+.book.finished {
+	border-left-color:#5EB95E;
+}
+
+.badge-info a,
+.badge-info a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer p {
+    text-align: center;
+}
