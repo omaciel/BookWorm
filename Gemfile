@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.2.11'
 gem 'gravatar_image_tag'
+gem 'less-rails'
 gem 'bootstrap-will_paginate'
 
 # Bundle edge Rails instead:
